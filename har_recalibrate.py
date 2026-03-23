@@ -102,21 +102,22 @@ def hhmm_to_frac(s):
 def compute_delta(base_h, diyanet_hhmm):
     """JS base saati ve Diyanet HH:MM'i verince gerekli delta (dakika) hesapla"""
     diyanet_frac = hhmm_to_frac(diyanet_hhmm)
-    # Gerekli: round(base_frac_min + delta) == diyanet_minute
     base_min  = (base_h - math.floor(base_h)) * 60
     diyanet_m = int(diyanet_hhmm.split(':')[1])
     for delta in range(-20, 21):
         result_frac = base_min + delta
-        if round(result_frac) % 60 == diyanet_m:
-            # Check hour too
+        # JS Math.round behaves like floor(x + 0.5), we replicate JS Math.round(mins - 0.035)
+        js_rounded_mins = math.floor(result_frac - 0.035 + 0.5)
+        if js_rounded_mins % 60 == diyanet_m:
             corrected_h = base_h + delta / 60.0
             corrected_hh = int(math.floor(corrected_h))
-            corrected_min = round((corrected_h - math.floor(corrected_h)) * 60)
-            if corrected_min == 60:
-                corrected_min = 0
+            if js_rounded_mins == 60:
                 corrected_hh += 1
+            elif js_rounded_mins < 0:
+                js_rounded_mins = 59
+                corrected_hh -= 1
             diyanet_hh = int(diyanet_hhmm.split(':')[0])
-            if corrected_hh == diyanet_hh and corrected_min == diyanet_m:
+            if corrected_hh % 24 == diyanet_hh % 24:
                 return delta
     raise ValueError(f"Delta bulunamadı: base={base_h:.4f}h, diyanet={diyanet_hhmm}")
 
@@ -200,7 +201,7 @@ def main():
         dt = datetime.date.fromisoformat(date_str)
         y, m, d = dt.year, dt.month, dt.day
         doy = getDayOfYear_JS(y, m, d)
-        idx = max(0, min(364, doy)) * 6
+        idx = max(0, min(364, doy - 1)) * 6
         if idx + 5 < len(har_string):
             deltas = [ord(har_string[idx+j])-77 for j in range(6)]
         else:
@@ -209,9 +210,11 @@ def main():
         results = []
         for j, base in enumerate(bases):
             corrected = base + deltas[j]/60.0
-            mins = round((corrected - math.floor(corrected)) * 60)
+            mins = math.floor((corrected - math.floor(corrected)) * 60 - 0.035 + 0.5)
             hrs  = int(math.floor(corrected))
             if mins == 60: mins = 0; hrs += 1
+            if mins < 0: mins = 59; hrs -= 1
+            if hrs >= 24: hrs -= 24
             results.append(f"{hrs:02d}:{mins:02d}")
         ok = all(results[j] == diyanet_times[j] for j in range(6))
         status = "✅" if ok else "⚠️"
