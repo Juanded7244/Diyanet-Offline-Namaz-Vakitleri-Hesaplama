@@ -1,4 +1,4 @@
-const CACHE_NAME = 'diyanet-offline-v4';
+const CACHE_NAME = 'diyanet-offline-v5';
 const ASSETS = [
   './Diyanet_Offline_Motor.html',
   './manifest.json',

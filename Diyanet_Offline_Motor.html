@@ -409,7 +409,7 @@
       let start = new Date(y, 0, 0);
       let now = new Date(y, m - 1, d);
       let diff = now - start;
-      return Math.floor(diff / 86400000) - 1;
+      return Math.round(diff / 86400000) - 1;
     }
 
     function getTimes(y, m, d, city, dist) {
