@@ -250,21 +250,19 @@ function getTimes(y, m, d, city, dist) {
   let hasr = ACOS(an/(COS(co.lat)*COS(s.decl)))/15.0;
 
   let raw = [
-      transit - hf,
-      transit - hss,
-      transit,
-      transit + hasr,
-      transit + hss,
-      transit + hi
+      transit - hf + deltas[0]/60.0,
+      transit - hss + deltas[1]/60.0,
+      transit + deltas[2]/60.0,
+      transit + hasr + deltas[3]/60.0,
+      transit + hss + deltas[4]/60.0,
+      transit + hi + deltas[5]/60.0
   ];
   
-  const tm = raw.map((h, i) => {
-      let mins = Math.round((h - Math.floor(h)) * 60) + deltas[i];
+  const tm = raw.map(h => {
+      let mins = Math.round((h - Math.floor(h)) * 60);
       let hrs = Math.floor(h);
-      while(mins >= 60) { mins -= 60; hrs += 1; }
-      while(mins < 0) { mins += 60; hrs -= 1; }
+      if(mins === 60) { mins = 0; hrs += 1; }
       if(hrs >= 24) { hrs -= 24; }
-      if(hrs < 0) { hrs += 24; }
       return String(hrs).padStart(2,'0') + ':' + String(mins).padStart(2,'0');
   });
 
